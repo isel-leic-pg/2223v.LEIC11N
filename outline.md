@@ -23,4 +23,4 @@
   * Concept and motivation
 
 For reference:
-* [Lecture video (in Portuguese)](coming soon)
+* [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=Z-MliPgm2Bg&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=1)
