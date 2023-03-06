@@ -1,0 +1,26 @@
+# Outline
+
+== Week 1
+=== 01/03/2023 - Course introduction
+* Syllabus, teaching methodology 
+* https://2223moodle.isel.pt/mod/page/view.php?id=131603[Evaluation] (for authenticated users)
+* Bibliography
+  ** link:docs/ProgKotlin-28022023.pdf[Conceitos de Programação em Kotlin, por Pedro Pereira]
+  ** https://www.amazon.com/Kotlin-Apprentice-Second-Beginning-Programming/dp/1950325008/ref=sr_1_1[Kotlin Apprentice] (book)
+  ** https://kotlinlang.org/docs/reference/[Kotlin Home - language reference]
+
+=== 02/03/2023 - Representations
+* Brief overview of the development environment
+  ** Identification of the main tools and build artifacts
+  ** https://www.jetbrains.com/idea/download/[IntelliJ IDEA download]
+  ** https://jdk.java.net/archive/[Open JDK 17.0.2 download]
+* Kotlin's type system, introduction
+  ** https://kotlinlang.org/docs/reference/basic-types.html[Primitive types]
+  ** Values and expressions (and __composing__ expressions)
+  ** __Composing__ values through aggregate data types
+    * https://kotlinlang.org/docs/reference/data-classes.html[Data classes]
+* Immutability
+  * Concept and motivation
+
+.For reference
+* https://www.youtube.com/watch?v=Z-MliPgm2Bg&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=1[Lecture video (in Portuguese)]
