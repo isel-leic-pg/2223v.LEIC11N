@@ -18,9 +18,9 @@
   ** https://kotlinlang.org/docs/reference/basic-types.html[Primitive types]
   ** Values and expressions (and __composing__ expressions)
   ** __Composing__ values through aggregate data types
-    * https://kotlinlang.org/docs/reference/data-classes.html[Data classes]
+    *** https://kotlinlang.org/docs/reference/data-classes.html[Data classes]
 * Immutability
-  * Concept and motivation
+  ** Concept and motivation
 
-.For reference
+.For reference:
 * https://www.youtube.com/watch?v=Z-MliPgm2Bg&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=1[Lecture video (in Portuguese)]
