@@ -1,0 +1,6 @@
+= 2223v.LEIC11N
+
+This repository contains the course material for the Programming course, section LEIC11N, summer semester of 2022-2023.
+
+.Lectures YouTube playlist (in Portuguese)
+video::Z-MliPgm2Bg/PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju[youtube]
