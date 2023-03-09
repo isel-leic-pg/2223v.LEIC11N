@@ -2,15 +2,33 @@ package pacman
 
 import pacman.domain.Coordinate
 import pacman.domain.Hero
-import pacman.view.coordinateToPoint
+import pacman.domain.MAZE_HEIGHT
+import pacman.domain.MAZE_WIDTH
+import pacman.view.MAZE_VIEW_HEIGHT
+import pacman.view.MAZE_VIEW_WIDTH
+import pacman.view.SCALE
+import pacman.view.drawGrid
+import pacman.view.drawHero
+import pt.isel.canvas.BLACK
+import pt.isel.canvas.Canvas
+import pt.isel.canvas.onFinish
+import pt.isel.canvas.onStart
 
 fun main() {
-    val hero = Hero(at = Coordinate(row = 5, column = 7))
-    val ghostPosition = Coordinate(row = 3, column = 7)
+    onStart {
+        val canvas = Canvas(
+            width = (MAZE_VIEW_WIDTH * SCALE).toInt(),
+            height = (MAZE_VIEW_HEIGHT * SCALE).toInt(),
+            background = BLACK
+        )
 
-    val heroAtScreen = coordinateToPoint(hero.at)
-    val ghostAtScreen = coordinateToPoint(ghostPosition)
+        drawHero(canvas, Hero(at = Coordinate(row = MAZE_HEIGHT / 2, column = MAZE_WIDTH / 2)))
+        drawHero(canvas, Hero(at = Coordinate(row = MAZE_HEIGHT / 2, column = MAZE_WIDTH / 2 + 1)))
+        drawGrid(canvas)
+    }
 
-    println(heroAtScreen)
-    println(ghostAtScreen)
+    onFinish {
+        println("Bye!")
+    }
+
 }
