@@ -2,14 +2,15 @@ package pacman
 
 import pacman.domain.Coordinate
 import pacman.domain.Hero
+import pacman.view.coordinateToPoint
 
 fun main() {
-    val origin = Coordinate(row = 0, column = 0)
-    val other = Coordinate(row = 1, column = 1)
+    val hero = Hero(at = Coordinate(row = 5, column = 7))
+    val ghostPosition = Coordinate(row = 3, column = 7)
 
-    val hero = Hero(at = origin)
-    println(hero)
-    println(hero.at)
-    println(hero.at.row)
-    println(hero.at.column)
+    val heroAtScreen = coordinateToPoint(hero.at)
+    val ghostAtScreen = coordinateToPoint(ghostPosition)
+
+    println(heroAtScreen)
+    println(ghostAtScreen)
 }

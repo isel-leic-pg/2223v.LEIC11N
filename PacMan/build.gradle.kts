@@ -3,7 +3,7 @@ plugins {
     application
 }
 
-group = "org.example"
+group = "pacman.demo"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -23,5 +23,5 @@ kotlin {
 }
 
 application {
-    mainClass.set("MainKt")
+    mainClass.set("pacman.MainKt")
 }
