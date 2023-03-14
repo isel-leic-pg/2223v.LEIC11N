@@ -24,3 +24,35 @@
 
 .For reference:
 * https://www.youtube.com/watch?v=Z-MliPgm2Bg&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=1[Lecture video (in Portuguese)]
+
+
+== Week 2
+=== 08/03/2023 - Behaviour, introduction
+* Mental model of execution
+  ** Program order vs. execution order
+** Elements of abstraction and code reuse, introduction
+  ** https://kotlinlang.org/docs/functions.html[Functions], introduction
+    *** Declaration and invocation (syntax and behaviour)
+    *** Parameters and return values
+
+.For reference:
+* https://www.youtube.com/watch?v=IkU5mpHrpS4&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=2[Lecture video (in Portuguese)]
+* https://www.youtube.com/watch?v=OiyyszczoGM&list=PL8XxoCaL3dBhHI1E3XKp_QeWQnxKd6U8x&index=2[Introdução ao controlo de versões com Git]
+
+=== 09/03/2023 - Behaviour, continued
+* Mental model of execution, continued
+  ** Program order vs. execution order
+* https://kotlinlang.org/docs/functions.html[Functions], continued
+  ** Declaration and invocation (syntax and behaviour)
+  ** Parameters and return values
+  ** https://kotlinlang.org/docs/functions.html#named-arguments[Named arguments]
+  ** https://kotlinlang.org/docs/functions.html#default-arguments[Default values]
+* Functions as:
+  ** Pure functions (no side effects)
+  ** Effectful functions (with side effects)
+** Control flow
+  *** https://kotlinlang.org/docs/control-flow.html#for-loops[Repetition using `for` construct]
+* Displaying graphics on the screen using the https://github.com/isel-leic-pg/2223v.LEIC11N/blob/main/docs/CanvasLib102.pdf[CanvasLib library]
+
+.For reference:
+* https://www.youtube.com/watch?v=zYilGk7XOlk&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=3[Lecture video (in Portuguese)]
