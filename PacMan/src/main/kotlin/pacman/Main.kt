@@ -9,6 +9,7 @@ import pacman.view.MAZE_VIEW_WIDTH
 import pacman.view.SCALE
 import pacman.view.drawGrid
 import pacman.view.drawHero
+import pacman.view.drawMaze
 import pt.isel.canvas.BLACK
 import pt.isel.canvas.Canvas
 import pt.isel.canvas.onFinish
@@ -23,8 +24,7 @@ fun main() {
         )
 
         drawHero(canvas, Hero(at = Coordinate(row = MAZE_HEIGHT / 2, column = MAZE_WIDTH / 2)))
-        drawHero(canvas, Hero(at = Coordinate(row = MAZE_HEIGHT / 2, column = MAZE_WIDTH / 2 + 1)))
-        drawGrid(canvas)
+        drawMaze(canvas)
     }
 
     onFinish {
