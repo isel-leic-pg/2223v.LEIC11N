@@ -11,27 +11,67 @@ import pt.isel.canvas.WHITE
 const val CELL_SIZE = 8
 
 /**
- * Dimension in pixels of the maze visual materialization
- */
-const val MAZE_VIEW_WIDTH = CELL_SIZE * MAZE_WIDTH
-const val MAZE_VIEW_HEIGHT = CELL_SIZE * MAZE_HEIGHT
-
-/**
  * The maze's scale factor
  */
 const val SCALE = 2.5
 
 const val SCALED_CELL_SIZE = (CELL_SIZE * SCALE).toInt()
+const val SCALED_MAZE_VIEW_WIDTH = SCALED_CELL_SIZE * MAZE_WIDTH
+const val SCALED_MAZE_VIEW_HEIGHT = SCALED_CELL_SIZE * MAZE_HEIGHT
+
+
+/**
+ * Draws the maze on the screen area represented by [canvas]
+ */
+fun drawMaze(canvas: Canvas) {
+    for (column in 1 until MAZE_WIDTH - 1) {
+        // Top Line
+        drawLayoutSprite(canvas, line = 0, column = 11, screenPosition = Point(SCALED_CELL_SIZE * column, y = 0))
+        // Bottom Line
+        drawLayoutSprite(canvas, line = 0, column = 12, screenPosition = Point(SCALED_CELL_SIZE * column, y = SCALED_MAZE_VIEW_HEIGHT - SCALED_CELL_SIZE))
+    }
+
+    for (line in 1 until MAZE_HEIGHT - 1) {
+        // Left line
+        drawLayoutSprite(canvas, line = 0, column = 3, screenPosition = Point(x = 0, y = SCALED_CELL_SIZE * line))
+        // Right line
+        drawLayoutSprite(canvas, line = 0, column = 2, screenPosition = Point(x = SCALED_MAZE_VIEW_WIDTH - SCALED_CELL_SIZE, y = SCALED_CELL_SIZE * line))
+    }
+
+    // Top corners
+    drawLayoutSprite(canvas, line = 0, column = 1, screenPosition = Point(0, 0))
+    drawLayoutSprite(canvas, line = 0, column = 0, screenPosition = Point(SCALED_MAZE_VIEW_WIDTH - SCALED_CELL_SIZE, 0))
+
+    // Bottom corners
+    drawLayoutSprite(canvas, line = 0, column = 5, screenPosition = Point(0, SCALED_MAZE_VIEW_HEIGHT - SCALED_CELL_SIZE))
+    drawLayoutSprite(canvas, line = 0, column = 4, screenPosition = Point(SCALED_MAZE_VIEW_WIDTH - SCALED_CELL_SIZE, SCALED_MAZE_VIEW_HEIGHT - SCALED_CELL_SIZE))
+}
+
+
+/**
+ * Draws the sprite located at [line] and [column] on the layout sprite sheet on the given [screenPosition]
+ */
+private fun drawLayoutSprite(canvas: Canvas, line: Int, column: Int, screenPosition: Point) {
+    val spriteX = column * CELL_SIZE + column
+    val spriteY = line * CELL_SIZE + line
+    canvas.drawImage(
+        "layout-sprite|$spriteX,$spriteY,$CELL_SIZE,$CELL_SIZE",
+        xLeft = screenPosition.x,
+        yTop = screenPosition.y,
+        width = SCALED_CELL_SIZE,
+        height = SCALED_CELL_SIZE
+    )
+}
 
 /**
  * Draws a grid on the screen area represented by [canvas]
  */
-fun drawGrid(canvas: Canvas) {
+private fun drawGrid(canvas: Canvas) {
     for (index in 0 until MAZE_HEIGHT) {
         canvas.drawLine(
             xFrom = 0,
             yFrom = SCALED_CELL_SIZE * index,
-            xTo = (MAZE_VIEW_WIDTH * SCALE).toInt(),
+            xTo = SCALED_MAZE_VIEW_WIDTH,
             yTo = SCALED_CELL_SIZE * index,
             color = WHITE,
             thickness = 1
@@ -42,87 +82,9 @@ fun drawGrid(canvas: Canvas) {
             xFrom = SCALED_CELL_SIZE * index,
             yFrom = 0,
             xTo = SCALED_CELL_SIZE * index,
-            yTo = (MAZE_VIEW_HEIGHT * SCALE).toInt(),
+            yTo = SCALED_MAZE_VIEW_HEIGHT,
             color = WHITE,
             thickness = 1
         )
     }
-}
-
-/**
- * Draws the maze on the screen area represented by [canvas]
- */
-fun drawMaze(canvas: Canvas) {
-    drawTopLine(canvas)
-    drawBottomLine(canvas)
-}
-
-private fun drawBottomLine(canvas: Canvas) {
-    val xIndex = 12
-    val spriteX = xIndex * CELL_SIZE + xIndex
-    val spriteY = 0
-    for (column in 1 until MAZE_WIDTH - 1) {
-        canvas.drawImage(
-            "layout-sprite|$spriteX,$spriteY,$CELL_SIZE,$CELL_SIZE",
-            xLeft = column * SCALED_CELL_SIZE,
-            yTop = SCALED_CELL_SIZE * (MAZE_HEIGHT - 1),
-            width = SCALED_CELL_SIZE,
-            height = SCALED_CELL_SIZE
-        )
-    }
-
-    val llcXIndex = 5
-    val llcSpriteX = llcXIndex * CELL_SIZE + llcXIndex
-    canvas.drawImage(
-        "layout-sprite|$llcSpriteX,0,$CELL_SIZE,$CELL_SIZE",
-        xLeft = 0,
-        yTop = SCALED_CELL_SIZE * (MAZE_HEIGHT - 1),
-        width = SCALED_CELL_SIZE,
-        height = SCALED_CELL_SIZE
-    )
-
-    val lrcXIndex = 4
-    val lrcSpriteX = lrcXIndex * CELL_SIZE + lrcXIndex
-    canvas.drawImage(
-        "layout-sprite|$lrcSpriteX,0,$CELL_SIZE,$CELL_SIZE",
-        xLeft = SCALED_CELL_SIZE * (MAZE_WIDTH - 1),
-        yTop = SCALED_CELL_SIZE * (MAZE_HEIGHT - 1),
-        width = SCALED_CELL_SIZE,
-        height = SCALED_CELL_SIZE
-    )
-}
-
-private fun drawTopLine(canvas: Canvas) {
-    val xIndex = 10
-    val spriteX = xIndex * CELL_SIZE + xIndex
-    val spriteY = 0
-    for (column in 1 until MAZE_WIDTH - 1) {
-        canvas.drawImage(
-            "layout-sprite|$spriteX,$spriteY,$CELL_SIZE,$CELL_SIZE",
-            xLeft = column * SCALED_CELL_SIZE,
-            yTop = 0,
-            width = SCALED_CELL_SIZE,
-            height = SCALED_CELL_SIZE
-        )
-    }
-
-    canvas.drawImage(
-        "layout-sprite|${CELL_SIZE+1},0,$CELL_SIZE,$CELL_SIZE",
-        xLeft = 0,
-        yTop = 0,
-        width = SCALED_CELL_SIZE,
-        height = SCALED_CELL_SIZE
-    )
-
-    canvas.drawImage(
-        "layout-sprite|0,0,$CELL_SIZE,$CELL_SIZE",
-        xLeft = SCALED_CELL_SIZE * (MAZE_WIDTH - 1),
-        yTop = 0,
-        width = SCALED_CELL_SIZE,
-        height = SCALED_CELL_SIZE
-    )
-}
-
-private fun drawLayoutSprite(canvas: Canvas, line: Int, column: Int, screenPosition: Point) {
-    TODO()
 }
