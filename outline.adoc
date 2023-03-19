@@ -56,3 +56,35 @@
 
 .For reference:
 * https://www.youtube.com/watch?v=zYilGk7XOlk&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=3[Lecture video (in Portuguese)]
+
+== Week 3
+=== 15/03/2023 - Behaviour, continued
+** Functions as a means of abstraction and code reuse
+** Functions as: (revisited)
+  *** Pure functions (no side effects)
+  *** Effectful functions (with side effects)
+* Displaying graphics on the screen using the CanvasLib library (continued)
+  ** https://github.com/isel-leic-pg/2223v.LEIC11N/blob/main/docs/CanvasLib102.pdf[Documentation]
+  ** https://github.com/CCISEL/CanvasLib[Repository]
+* Live coding session: Building a PacMan clone
+
+.For reference:
+* https://www.youtube.com/watch?v=EAf7so_93ds&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=4[Lecture video (in Portuguese)]
+
+=== 16/03/2023 - Behaviour, continued
+* Mental model of execution, continued
+  ** Program order vs. execution order, revisited
+* Functions as a means of abstraction and code reuse (continued)
+* Control flow: Conditional expressions
+  ** https://kotlinlang.org/docs/control-flow.html#return-ifs[Conditional expressions using `if` construct]
+  ** https://kotlinlang.org/docs/control-flow.html#return-when[Conditional expressions using `when` construct]
+* Handling keyboard input using the CanvasLib library
+  ** Introduction to the event based programming model
+  ** The event loop, event queue and event handlers
+* Introduction to mutable state
+  ** var vs val
+  ** Imposing a discipline of immutability
+* Live coding session: Building a PacMan clone, continued
+
+.For reference:
+* https://www.youtube.com/watch?v=IjR5Jc7lIAo&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=5[Lecture video (in Portuguese)]
