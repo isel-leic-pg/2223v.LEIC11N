@@ -84,6 +84,8 @@
 * Introduction to mutable state
   ** var vs val
   ** Imposing a discipline of immutability
+* Representations:
+  ** https://kotlinlang.org/docs/enum-classes.html[Enum classes]
 * Live coding session: Building a PacMan clone, continued
 
 .For reference:
