@@ -11,26 +11,26 @@ const val MAZE_HEIGHT = 31
  */
 data class Coordinate(val row: Int, val column: Int)
 
+/**
+ * Represents the directions in which the hero can move
+ */
 enum class Direction {
     UP, DOWN, LEFT, RIGHT
 }
 
 /**
- * Adds to [coordinate] the position variation determined by [direction]
+ * Adds to this coordinate the position variation determined by [direction]. If the resulting
+ * coordinate is outside the maze, the original coordinate is returned.
  */
-fun add(coordinate: Coordinate, direction: Direction) =
-    when (direction) {
-        Direction.UP ->
-            if (coordinate.row != 1) coordinate.copy(row = coordinate.row - 1)
-            else coordinate
-        Direction.DOWN ->
-            if (coordinate.row != MAZE_HEIGHT - 2) coordinate.copy(row = coordinate.row + 1)
-            else coordinate
-        Direction.LEFT ->
-            if (coordinate.column != 1) coordinate.copy(column = coordinate.column - 1)
-            else coordinate
-        Direction.RIGHT ->
-            if (coordinate.column != MAZE_WIDTH - 2) coordinate.copy(column = coordinate.column + 1)
-            else coordinate
+operator fun Coordinate.plus(direction: Direction): Coordinate {
+    val newCoordinate = when (direction) {
+        Direction.UP -> copy(row = row - 1)
+        Direction.DOWN -> copy(row = row + 1)
+        Direction.LEFT -> copy(column = column - 1)
+        Direction.RIGHT -> copy(column = column + 1)
     }
+    return if (newCoordinate.isValid()) newCoordinate else this
+}
 
+fun Coordinate.isValid(): Boolean =
+    row >= 1 && row < MAZE_HEIGHT - 1 && column >= 1 && column < MAZE_WIDTH - 1

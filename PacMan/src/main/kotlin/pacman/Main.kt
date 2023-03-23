@@ -10,8 +10,6 @@ import pacman.domain.move
 import pacman.domain.moveBy
 import pacman.view.SCALED_MAZE_VIEW_HEIGHT
 import pacman.view.SCALED_MAZE_VIEW_WIDTH
-import pacman.view.drawHero
-import pacman.view.drawMaze
 import pacman.view.drawWorld
 import pt.isel.canvas.BLACK
 import pt.isel.canvas.Canvas
@@ -32,12 +30,17 @@ fun main() {
 
         canvas.onKeyPressed { key ->
             hero = when (key.code) {
-                KeyEvent.VK_UP -> moveBy(hero, to = Direction.UP)
-                KeyEvent.VK_DOWN -> moveBy(hero, to = Direction.DOWN)
-                KeyEvent.VK_LEFT -> moveBy(hero, to = Direction.LEFT)
-                KeyEvent.VK_RIGHT -> moveBy(hero, to = Direction.RIGHT)
+                KeyEvent.VK_UP -> hero.face(Direction.UP)
+                KeyEvent.VK_DOWN -> hero.face(Direction.DOWN)
+                KeyEvent.VK_LEFT -> hero.face(Direction.LEFT)
+                KeyEvent.VK_RIGHT -> hero.face(Direction.RIGHT)
                 else -> hero
             }
+            drawWorld(canvas, hero)
+        }
+
+        canvas.onTimeProgress(period = 1000/30)  {
+            hero = hero.move()
             drawWorld(canvas, hero)
         }
     }

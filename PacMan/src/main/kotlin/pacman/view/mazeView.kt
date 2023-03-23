@@ -19,7 +19,6 @@ const val SCALED_CELL_SIZE = (CELL_SIZE * SCALE).toInt()
 const val SCALED_MAZE_VIEW_WIDTH = SCALED_CELL_SIZE * MAZE_WIDTH
 const val SCALED_MAZE_VIEW_HEIGHT = SCALED_CELL_SIZE * MAZE_HEIGHT
 
-
 /**
  * Draws the maze on the screen area represented by [canvas]
  */

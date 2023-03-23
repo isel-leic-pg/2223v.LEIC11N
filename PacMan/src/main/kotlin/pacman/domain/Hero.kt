@@ -1,5 +1,7 @@
 package pacman.domain
 
+import java.nio.file.Files.move
+
 /**
  * Represents the hero, Pac-Man
  */
@@ -11,13 +13,14 @@ data class Hero(
 /**
  * Moves the hero in the direction he is facing
  */
-fun move(hero: Hero) =
-    hero.copy(at = add(coordinate = hero.at, direction = hero.facing))
+fun Hero.move() = copy(at + facing)
 
 /**
- * Makes the hero face the specified direction.
+ * Makes the hero face the specified direction
  */
-fun face(hero: Hero, to: Direction) =
-    hero.copy(facing = to)
+fun Hero.face(to: Direction) = copy(facing = to)
 
-fun moveBy(hero: Hero, to: Direction) = move(face(hero, to))
+/**
+ * Moves the hero in the specified direction
+ */
+fun Hero.moveBy(to: Direction) = face(to).move()
