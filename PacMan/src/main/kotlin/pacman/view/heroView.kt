@@ -27,7 +27,7 @@ fun drawHero(canvas: Canvas, hero: Hero) {
 }
 
 /**
- * Draws the sprite located at [line] and [column] on the hero sprite sheet on the given [screenPosition]
+ * Draws the sprite located at [line] and [column] on the hero sprite sheet on the given screen [position]
  */
 private fun drawHeroSprite(canvas: Canvas, line: Int, column: Int, position: Point) {
     val spriteX = column * HERO_SIZE
