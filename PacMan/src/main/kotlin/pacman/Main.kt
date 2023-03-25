@@ -7,7 +7,6 @@ import pacman.domain.MAZE_HEIGHT
 import pacman.domain.MAZE_WIDTH
 import pacman.domain.face
 import pacman.domain.move
-import pacman.domain.moveBy
 import pacman.view.SCALED_MAZE_VIEW_HEIGHT
 import pacman.view.SCALED_MAZE_VIEW_WIDTH
 import pacman.view.drawWorld
@@ -26,7 +25,7 @@ fun main() {
         )
 
         var hero = Hero(at = Coordinate(row = MAZE_HEIGHT / 2, column = MAZE_WIDTH / 2), facing = Direction.UP)
-        drawWorld(canvas, hero)
+        canvas.drawWorld(hero)
 
         canvas.onKeyPressed { key ->
             hero = when (key.code) {
@@ -36,12 +35,12 @@ fun main() {
                 KeyEvent.VK_RIGHT -> hero.face(Direction.RIGHT)
                 else -> hero
             }
-            drawWorld(canvas, hero)
+            canvas.drawWorld(hero)
         }
 
         canvas.onTimeProgress(period = 1000/30)  {
             hero = hero.move()
-            drawWorld(canvas, hero)
+            canvas.drawWorld(hero)
         }
     }
 

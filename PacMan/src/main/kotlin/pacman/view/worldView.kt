@@ -4,8 +4,8 @@ import pacman.domain.Hero
 import pt.isel.canvas.Canvas
 
 
-fun drawWorld(canvas: Canvas, hero: Hero) {
-    canvas.erase()
-    drawMaze(canvas)
-    drawHero(canvas, hero)
+fun Canvas.drawWorld(hero: Hero) {
+    erase()
+    drawMaze()
+    drawHero(hero)
 }

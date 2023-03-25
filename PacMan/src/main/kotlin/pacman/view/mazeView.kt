@@ -22,28 +22,28 @@ const val SCALED_MAZE_VIEW_HEIGHT = SCALED_CELL_SIZE * MAZE_HEIGHT
 /**
  * Draws the maze on the screen area represented by [canvas]
  */
-fun drawMaze(canvas: Canvas) {
+fun Canvas.drawMaze() {
     for (column in 1 until MAZE_WIDTH - 1) {
         // Top Line
-        drawLayoutSprite(canvas, line = 0, column = 11, screenPosition = Point(SCALED_CELL_SIZE * column, y = 0))
+        drawLayoutSprite(this, line = 0, column = 11, screenPosition = Point(SCALED_CELL_SIZE * column, y = 0))
         // Bottom Line
-        drawLayoutSprite(canvas, line = 0, column = 12, screenPosition = Point(SCALED_CELL_SIZE * column, y = SCALED_MAZE_VIEW_HEIGHT - SCALED_CELL_SIZE))
+        drawLayoutSprite(this, line = 0, column = 12, screenPosition = Point(SCALED_CELL_SIZE * column, y = SCALED_MAZE_VIEW_HEIGHT - SCALED_CELL_SIZE))
     }
 
     for (line in 1 until MAZE_HEIGHT - 1) {
         // Left line
-        drawLayoutSprite(canvas, line = 0, column = 3, screenPosition = Point(x = 0, y = SCALED_CELL_SIZE * line))
+        drawLayoutSprite(this, line = 0, column = 3, screenPosition = Point(x = 0, y = SCALED_CELL_SIZE * line))
         // Right line
-        drawLayoutSprite(canvas, line = 0, column = 2, screenPosition = Point(x = SCALED_MAZE_VIEW_WIDTH - SCALED_CELL_SIZE, y = SCALED_CELL_SIZE * line))
+        drawLayoutSprite(this, line = 0, column = 2, screenPosition = Point(x = SCALED_MAZE_VIEW_WIDTH - SCALED_CELL_SIZE, y = SCALED_CELL_SIZE * line))
     }
 
     // Top corners
-    drawLayoutSprite(canvas, line = 0, column = 1, screenPosition = Point(0, 0))
-    drawLayoutSprite(canvas, line = 0, column = 0, screenPosition = Point(SCALED_MAZE_VIEW_WIDTH - SCALED_CELL_SIZE, 0))
+    drawLayoutSprite(this, line = 0, column = 1, screenPosition = Point(0, 0))
+    drawLayoutSprite(this, line = 0, column = 0, screenPosition = Point(SCALED_MAZE_VIEW_WIDTH - SCALED_CELL_SIZE, 0))
 
     // Bottom corners
-    drawLayoutSprite(canvas, line = 0, column = 5, screenPosition = Point(0, SCALED_MAZE_VIEW_HEIGHT - SCALED_CELL_SIZE))
-    drawLayoutSprite(canvas, line = 0, column = 4, screenPosition = Point(SCALED_MAZE_VIEW_WIDTH - SCALED_CELL_SIZE, SCALED_MAZE_VIEW_HEIGHT - SCALED_CELL_SIZE))
+    drawLayoutSprite(this, line = 0, column = 5, screenPosition = Point(0, SCALED_MAZE_VIEW_HEIGHT - SCALED_CELL_SIZE))
+    drawLayoutSprite(this, line = 0, column = 4, screenPosition = Point(SCALED_MAZE_VIEW_WIDTH - SCALED_CELL_SIZE, SCALED_MAZE_VIEW_HEIGHT - SCALED_CELL_SIZE))
 }
 
 

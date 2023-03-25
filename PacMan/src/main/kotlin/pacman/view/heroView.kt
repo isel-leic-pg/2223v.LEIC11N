@@ -14,7 +14,7 @@ const val SCALED_HERO_SIZE = (HERO_SIZE * SCALE).toInt()
 /**
  * Draws the given [hero] on the screen area represented by [canvas]
  */
-fun drawHero(canvas: Canvas, hero: Hero) {
+fun Canvas.drawHero(hero: Hero) {
     val position = coordinateToPoint(hero.at, SCALE)
     val spriteColumn = 1
     val spriteLine = when (hero.facing) {
@@ -23,7 +23,7 @@ fun drawHero(canvas: Canvas, hero: Hero) {
         Direction.UP -> 2
         Direction.DOWN -> 3
     }
-    drawHeroSprite(canvas, spriteLine, spriteColumn, position)
+    drawHeroSprite(this, spriteLine, spriteColumn, position)
 }
 
 /**
