@@ -4,8 +4,9 @@ import pacman.domain.Hero
 import pt.isel.canvas.Canvas
 
 
-fun Canvas.drawWorld(hero: Hero) {
+fun Canvas.drawWorld(hero: Hero, step: AnimationStep) {
+    println("Drawing frame")
     erase()
     drawMaze()
-    drawHero(hero)
+    drawHero(hero, step)
 }

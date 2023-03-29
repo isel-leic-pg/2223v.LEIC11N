@@ -7,9 +7,12 @@ import pacman.domain.MAZE_HEIGHT
 import pacman.domain.MAZE_WIDTH
 import pacman.domain.face
 import pacman.domain.move
+import pacman.view.AnimationStep
 import pacman.view.SCALED_MAZE_VIEW_HEIGHT
 import pacman.view.SCALED_MAZE_VIEW_WIDTH
 import pacman.view.drawWorld
+import pacman.view.isLast
+import pacman.view.next
 import pt.isel.canvas.BLACK
 import pt.isel.canvas.Canvas
 import pt.isel.canvas.onFinish
@@ -25,7 +28,9 @@ fun main() {
         )
 
         var hero = Hero(at = Coordinate(row = MAZE_HEIGHT / 2, column = MAZE_WIDTH / 2), facing = Direction.UP)
-        canvas.drawWorld(hero)
+        var step = AnimationStep(current = 0, total = 4)
+
+        canvas.drawWorld(hero, step)
 
         canvas.onKeyPressed { key ->
             hero = when (key.code) {
@@ -35,12 +40,15 @@ fun main() {
                 KeyEvent.VK_RIGHT -> hero.face(Direction.RIGHT)
                 else -> hero
             }
-            canvas.drawWorld(hero)
+            canvas.drawWorld(hero, step)
         }
 
-        canvas.onTimeProgress(period = 1000/30)  {
-            hero = hero.move()
-            canvas.drawWorld(hero)
+        canvas.onTimeProgress(period = 1000 / step.total)  {
+            if (step.isLast())
+                hero = hero.move()
+
+            canvas.drawWorld(hero, step)
+            step = step.next()
         }
     }
 
