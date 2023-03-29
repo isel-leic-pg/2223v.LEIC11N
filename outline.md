@@ -90,3 +90,30 @@
 
 ***For reference:***
 * [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=IjR5Jc7lIAo&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=5)
+
+## Week 4
+### 22/03/2023 - Coding session
+* Revisiting the studied constructs
+  * Putting the pieces together
+    * Representations: primitive types, data classes and enum classes
+    * Behaviour: functions, expressions, repetition and conditional expressions
+* Live coding session: Building a PacMan clone, continued
+
+***For reference:***
+* [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=55o8uSro8Wc&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=6)
+
+### 23/03/2023 - Functions, continued
+* Extension functions
+  * Purpose and motivation
+  * [Documentation](https://kotlinlang.org/docs/extensions.html)
+* Operator overloading
+  * Purpose and motivation
+  * [Documentation](https://kotlinlang.org/docs/operator-overloading.html)
+* Live coding session: Building a PacMan clone, continued
+  * Applying the new concepts to the game implementation
+  * Adding animations to the game:
+    * Expressing repetition using `canvas.setInterval`
+
+***For reference:***
+*[Lecture video (in Portuguese)](https://www.youtube.com/watch?v=FoVXnj7i3TQ&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=7)
+  
