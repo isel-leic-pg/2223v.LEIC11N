@@ -117,3 +117,23 @@
 ***For reference:***
 *[Lecture video (in Portuguese)](https://www.youtube.com/watch?v=FoVXnj7i3TQ&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=7)
   
+## Week 5
+### 29/03/2023 - Coding session
+* Putting the pieces together
+  * Revisiting the studied constructs
+* Live coding session: Building a PacMan clone, continued
+
+***For reference:***
+* [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=O5O14nazqng&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=8)
+
+### 30/03/2023 - Practice session
+* Session dedicated to solving the first assignment
+
+## Week 6
+### 05/04/2023 - Evaluation session
+* Session dedicated to the first mini test
+  * Revision of the studied concepts
+  * Realization of the first mini test
+
+### 06/04/2023 - Easter break
+
