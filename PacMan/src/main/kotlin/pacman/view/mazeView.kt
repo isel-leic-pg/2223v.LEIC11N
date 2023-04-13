@@ -13,7 +13,7 @@ const val CELL_SIZE = 8
 /**
  * The maze's scale factor
  */
-const val SCALE = 2.5
+const val SCALE = 2.0
 
 const val SCALED_CELL_SIZE = (CELL_SIZE * SCALE).toInt()
 const val SCALED_MAZE_VIEW_WIDTH = SCALED_CELL_SIZE * MAZE_WIDTH
@@ -44,6 +44,9 @@ fun Canvas.drawMaze() {
     // Bottom corners
     drawLayoutSprite(this, line = 0, column = 5, screenPosition = Point(0, SCALED_MAZE_VIEW_HEIGHT - SCALED_CELL_SIZE))
     drawLayoutSprite(this, line = 0, column = 4, screenPosition = Point(SCALED_MAZE_VIEW_WIDTH - SCALED_CELL_SIZE, SCALED_MAZE_VIEW_HEIGHT - SCALED_CELL_SIZE))
+
+    // Draw the grid
+    drawGrid(this)
 }
 
 

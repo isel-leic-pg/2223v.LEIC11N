@@ -11,6 +11,7 @@ import pacman.view.AnimationStep
 import pacman.view.SCALED_MAZE_VIEW_HEIGHT
 import pacman.view.SCALED_MAZE_VIEW_WIDTH
 import pacman.view.drawWorld
+import pacman.view.isFirst
 import pacman.view.isLast
 import pacman.view.next
 import pt.isel.canvas.BLACK
@@ -28,7 +29,7 @@ fun main() {
         )
 
         var hero = Hero(at = Coordinate(row = MAZE_HEIGHT / 2, column = MAZE_WIDTH / 2), facing = Direction.UP)
-        var step = AnimationStep(current = 0, total = 4)
+        var step = AnimationStep(current = 3, total = 4)
 
         canvas.drawWorld(hero, step)
 
@@ -43,12 +44,15 @@ fun main() {
             canvas.drawWorld(hero, step)
         }
 
-        canvas.onTimeProgress(period = 1000 / step.total)  {
-            if (step.isLast())
+        canvas.onTimeProgress(period = 1000/40)  {
+
+            step = step.next()
+
+            if (step.isFirst()) {
                 hero = hero.move()
+            }
 
             canvas.drawWorld(hero, step)
-            step = step.next()
         }
     }
 
