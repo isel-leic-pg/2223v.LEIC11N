@@ -137,3 +137,20 @@
 
 ### 06/04/2023 - Easter break
 
+## Week 7
+### 12/04/2023 - Automated tests: introduction
+* Introduction to automated tests
+  * Purpose and motivation
+  * [Documentation](https://kotlinlang.org/docs/jvm-test-using-junit.html)
+* Applicability in the running example: PacMan clone
+
+***For reference:***
+* [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=McX2ozWcD0c&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=9)
+
+### 13/04/2023 - Coding and debugging session
+* Live coding session: Building a PacMan clone, continued
+  * Dealing with bugs
+  * Automated tests, continued
+
+***For reference:***
+* [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=Z8Z8Z8Z8Z8Z&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=10)

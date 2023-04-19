@@ -1,7 +1,5 @@
 package pacman.domain
 
-import java.nio.file.Files.move
-
 /**
  * Represents the hero, Pac-Man
  */
