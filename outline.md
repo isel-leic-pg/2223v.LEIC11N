@@ -154,3 +154,24 @@
 
 ***For reference:***
 * [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=Z8Z8Z8Z8Z8Z&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=10)
+
+## Week 8
+### 19/04/2023 - Coding session
+* Live coding session: Building a PacMan clone, continued
+  * A mental model for solving programming problems, continued
+
+***For reference:***
+* Lecture video (in Portuguese) _(coming soon)_
+
+### 20/04/2023 - Representations, continued
+* Kotlin's type system, continued
+  * [Nullable types](https://kotlinlang.org/docs/null-safety.html)
+    * Motivation 
+    * Smart casts
+  * Collections, introduction
+    * Lists (concept and implementation)
+    * Arrays vs linked lists, introduction
+* Applicability in the running example: PacMan clone
+
+***For reference:***
+* Lecture video (in Portuguese) _(coming soon)_
