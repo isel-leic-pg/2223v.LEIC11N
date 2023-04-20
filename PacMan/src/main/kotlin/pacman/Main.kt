@@ -1,19 +1,9 @@
 package pacman
 
-import pacman.domain.Coordinate
 import pacman.domain.Direction
-import pacman.domain.Hero
-import pacman.domain.MAZE_HEIGHT
-import pacman.domain.MAZE_WIDTH
 import pacman.domain.face
-import pacman.domain.move
-import pacman.view.AnimationStep
 import pacman.view.SCALED_MAZE_VIEW_HEIGHT
 import pacman.view.SCALED_MAZE_VIEW_WIDTH
-import pacman.view.drawWorld
-import pacman.view.isFirst
-import pacman.view.isLast
-import pacman.view.next
 import pt.isel.canvas.BLACK
 import pt.isel.canvas.Canvas
 import pt.isel.canvas.onFinish
@@ -28,37 +18,27 @@ fun main() {
             background = BLACK
         )
 
-        var hero = Hero(at = Coordinate(row = MAZE_HEIGHT / 2, column = MAZE_WIDTH / 2), facing = Direction.UP)
-        var step = AnimationStep(current = 3, total = 4)
-
-        canvas.drawWorld(hero, step)
+        var world = World()
+        canvas.drawWorld(world)
 
         canvas.onKeyPressed { key ->
-            hero = when (key.code) {
-                KeyEvent.VK_UP -> hero.face(Direction.UP)
-                KeyEvent.VK_DOWN -> hero.face(Direction.DOWN)
-                KeyEvent.VK_LEFT -> hero.face(Direction.LEFT)
-                KeyEvent.VK_RIGHT -> hero.face(Direction.RIGHT)
-                else -> hero
+            world = when (key.code) {
+                KeyEvent.VK_UP -> world.copy(hero = world.hero.face(Direction.UP))
+                KeyEvent.VK_DOWN -> world.copy(hero = world.hero.face(Direction.DOWN))
+                KeyEvent.VK_LEFT -> world.copy(hero = world.hero.face(Direction.LEFT))
+                KeyEvent.VK_RIGHT -> world.copy(hero = world.hero.face(Direction.RIGHT))
+                else -> world
             }
-            canvas.drawWorld(hero, step)
+            canvas.redrawWorld(world)
         }
 
         canvas.onTimeProgress(period = 1000/40)  {
-
-            step = step.next()
-
-            if (step.isFirst()) {
-                hero = hero.move()
-            }
-
-            canvas.drawWorld(hero, step)
+            world = world.doStep()
+            canvas.drawWorld(world)
         }
     }
 
     onFinish {
         println("Bye!")
     }
-
-    println("Main ends")
 }

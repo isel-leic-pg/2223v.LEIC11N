@@ -5,13 +5,14 @@ package pacman.domain
  */
 data class Hero(
     val at: Coordinate,
-    val facing: Direction
+    val facing: Direction,
+    val previouslyAt: Coordinate = at
 )
 
 /**
  * Moves the hero in the direction he is facing
  */
-fun Hero.move() = copy(at + facing)
+fun Hero.move() = copy(at = at + facing, previouslyAt = at)
 
 /**
  * Makes the hero face the specified direction
@@ -19,6 +20,6 @@ fun Hero.move() = copy(at + facing)
 fun Hero.face(to: Direction) = copy(facing = to)
 
 /**
- * Moves the hero in the specified direction
+ * Returns true if the hero is moving. False otherwise.
  */
-fun Hero.moveBy(to: Direction) = face(to).move()
+fun Hero.isMoving() = at != previouslyAt
