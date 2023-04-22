@@ -161,7 +161,7 @@
   * A mental model for solving programming problems, continued
 
 ***For reference:***
-* Lecture video (in Portuguese) _(coming soon)_
+* [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=z-4-qiOA0AY&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=11)
 
 ### 20/04/2023 - Representations, continued
 * Kotlin's type system, continued
@@ -174,4 +174,4 @@
 * Applicability in the running example: PacMan clone
 
 ***For reference:***
-* Lecture video (in Portuguese) _(coming soon)_
+* [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=mMbstvBdnMU&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=12)
