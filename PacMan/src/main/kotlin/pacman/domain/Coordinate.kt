@@ -32,5 +32,8 @@ operator fun Coordinate.plus(direction: Direction): Coordinate {
     return if (newCoordinate.isValid()) newCoordinate else this
 }
 
+/**
+ * Checks if this coordinate is inside the maze
+ */
 fun Coordinate.isValid(): Boolean =
     row >= 1 && row < MAZE_HEIGHT - 1 && column >= 1 && column < MAZE_WIDTH - 1

@@ -13,7 +13,17 @@ data class Hero(
 /**
  * Moves the hero in the direction he is facing
  */
-fun Hero.move() = copy(at = at + facing, facing = intent, previouslyAt = at)
+fun Hero.move(): Hero {
+    val newPositionChangedDirection = at + intent
+    if (newPositionChangedDirection.isValid())
+        return copy(at = newPositionChangedDirection, previouslyAt = at, facing = intent)
+
+    val newPositionSameDirection = at + facing
+    return if (newPositionSameDirection.isValid())
+        copy(at = newPositionSameDirection, previouslyAt = at)
+    else
+        copy(facing = intent)
+}
 
 /**
  * Makes the hero face the specified direction

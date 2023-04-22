@@ -34,9 +34,9 @@ fun main() {
                 world = world.changeHeroIntent(direction)
         }
 
-        canvas.onTimeProgress(period = 1000/40)  {
+        canvas.onTimeProgress(period = 1000 / 40)  {
             world = world.doStep()
-            canvas.drawWorld(world)
+            canvas.redrawWorld(world)
         }
     }
 

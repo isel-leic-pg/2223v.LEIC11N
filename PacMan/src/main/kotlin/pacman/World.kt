@@ -73,6 +73,7 @@ fun Canvas.drawWorld(world: World) {
  * each frame.
  */
 fun Canvas.redrawWorld(world: World) {
-    redraw(world.hero, world.heroMovementStep, world.heroAnimationStep)
+    if (world.hero.isMoving())
+        redraw(world.hero, world.heroMovementStep, world.heroAnimationStep)
 }
 
