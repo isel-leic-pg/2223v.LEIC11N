@@ -175,3 +175,19 @@
 
 ***For reference:***
 * [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=mMbstvBdnMU&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=12)
+
+## Week 9
+### 26/04/2023 - Higher Order Functions, introduction
+* Functions, revisited
+  * Global functions
+* [Functions as values: Higher Order Functions](https://kotlinlang.org/docs/lambdas.html)
+  * Purpose and motivation
+  * Function types
+  * Functions references: operator `::`
+
+***For reference:***
+* Lecture video (in Portuguese) _(coming soon)_
+
+### 27/04/2023 - Practice session
+* Session dedicated to solving the second assignment
+* 
