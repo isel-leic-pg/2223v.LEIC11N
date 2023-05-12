@@ -10,10 +10,14 @@ import pt.isel.canvas.onFinish
 import pt.isel.canvas.onStart
 
 /**
- * SCRIPT:
- * 1. And now, the maze.
- * 1.1 What is the representation of the maze?
- * 1.2 How many different representations of the maze do we need?
+ * Frames per second
+ */
+const val FPS = 30
+
+/**
+ * Implementation of a Pac-Man clone, based on [this version](https://freepacman.org/)
+ * For information about the game, namely, scoring system and movement patterns,
+ * see [here](https://pacman.fandom.com/wiki/Pac-Man_(game))
  */
 fun main() {
     onStart {
@@ -27,7 +31,7 @@ fun main() {
                 world = world.changeHeroIntent(direction)
         }
 
-        canvas.onTimeProgress(period = 1000 / 40)  {
+        canvas.onTimeProgress(period = 1000 / FPS)  {
             world = world.doStep()
             canvas.redrawWorld(world)
         }

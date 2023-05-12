@@ -1,17 +1,12 @@
 package pacman
 
 import pacman.domain.Arena
-import pacman.domain.Coordinate
 import pacman.domain.Direction
-import pacman.domain.Hero
-import pacman.domain.MAZE_HEIGHT
-import pacman.domain.MAZE_WIDTH
 import pacman.domain.Step
 import pacman.domain.changeIntent
 import pacman.domain.createArena
 import pacman.domain.isFirst
 import pacman.domain.isMoving
-import pacman.domain.move
 import pacman.domain.moveHero
 import pacman.domain.next
 import pacman.view.ANIMATION_STEP_COUNT
@@ -83,4 +78,3 @@ fun Canvas.redrawWorld(world: World) {
     if (world.arena.pacMan.isMoving())
         redraw(world.arena.pacMan, world.heroMovementStep, world.heroAnimationStep)
 }
-

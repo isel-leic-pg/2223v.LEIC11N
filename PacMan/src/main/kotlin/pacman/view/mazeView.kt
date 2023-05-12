@@ -1,7 +1,6 @@
 package pacman.view
 
 import pacman.domain.MAZE_HEIGHT
-import pacman.domain.MAZE_LAYOUT
 import pacman.domain.MAZE_WIDTH
 import pt.isel.canvas.Canvas
 import pt.isel.canvas.WHITE
@@ -30,7 +29,7 @@ fun Canvas.drawMaze() {
 }
 
 /**
- * Draws the sprite located at [line] and [column] on the layout sprite sheet on the given [screenPosition]
+ * Draws on the given [screenPosition] the sprite located at [spritePosition] of the layout sprite sheet
  */
 internal fun drawLayoutSprite(canvas: Canvas, spritePosition: Point, screenPosition: Point) {
     val spriteX = spritePosition.x

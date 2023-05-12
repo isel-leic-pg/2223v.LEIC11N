@@ -24,7 +24,7 @@ fun Hero.move(maze: List<Cell>): Hero {
     return if (maze[facingIndex] == Cell.EMPTY)
         copy(at = newPositionSameDirection, previouslyAt = at)
     else
-        copy(facing = intent)
+        copy(facing = intent, previouslyAt = at)
 }
 
 /**
