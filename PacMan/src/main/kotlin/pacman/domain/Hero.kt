@@ -13,13 +13,15 @@ data class Hero(
 /**
  * Moves the hero in the direction he is facing
  */
-fun Hero.move(): Hero {
+fun Hero.move(maze: List<Cell>): Hero {
     val newPositionChangedDirection = at + intent
-    if (newPositionChangedDirection.isValid())
+    val intendedIndex = newPositionChangedDirection.column + newPositionChangedDirection.row * MAZE_WIDTH
+    if (maze[intendedIndex] == Cell.EMPTY)
         return copy(at = newPositionChangedDirection, previouslyAt = at, facing = intent)
 
     val newPositionSameDirection = at + facing
-    return if (newPositionSameDirection.isValid())
+    val facingIndex = newPositionSameDirection.column + newPositionSameDirection.row * MAZE_WIDTH
+    return if (maze[facingIndex] == Cell.EMPTY)
         copy(at = newPositionSameDirection, previouslyAt = at)
     else
         copy(facing = intent)
