@@ -186,8 +186,47 @@
   * Functions references: operator `::`
 
 ***For reference:***
-* Lecture video (in Portuguese) _(coming soon)_
+* [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=T07IZcjyQuU&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=13)
 
 ### 27/04/2023 - Practice session
 * Session dedicated to solving the second assignment
-* 
+
+## Week 10
+### 03/05/2023 - Collections: lists
+* Immutable and mutable lists
+  * [Documentation](https://kotlinlang.org/docs/collections-overview.html#list)
+  * Motivation
+  * Properties
+* Expressing repetition
+  * Using the `for` construct ([docs](https://kotlinlang.org/docs/control-flow.html#for-loops))
+  * Using `forEach` ([docs](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html))
+* List operations:
+  * Element selection: `filter` ([docs](https://kotlinlang.org/docs/collection-filtering.html))
+  * Element transformation: `map` ([docs](https://kotlinlang.org/docs/collection-transformations.html))
+
+***For reference:***
+* [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=wFAwnWelJhI&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=14)
+
+### 04/05/2023 - Evaluation session 
+* Session dedicated to the second mini test
+  * Revision of the studied concepts
+  * Realization of the second mini test
+
+## Week 11
+### 10/05/2023 - Immutability and mutability
+* Using immutable data representations
+  * Motivation and consequences
+* Using mutable data representations
+  * Motivation and consequences
+  * Identity and equivalence
+* [Equality in Kotlin](https://kotlinlang.org/docs/equality.html)
+
+***For reference:***
+* [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=QwopbhP4-VY&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=15)
+
+### 11/05/2023 - Coding session
+* Live coding session: Building a PacMan clone, continued
+  * A mental model for solving programming problems, continued
+
+***For reference:***
+* [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=nxHZhnjEBfI&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=16)
