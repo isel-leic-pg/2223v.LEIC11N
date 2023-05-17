@@ -11,7 +11,9 @@ val pacManStartingPosition = Coordinate(row = 23, column = 13)
  */
 enum class Cell {
     WALL,
-    EMPTY
+    EMPTY,
+    PELLET,
+    POWER_PELLET
 }
 
 /**
@@ -24,10 +26,26 @@ data class Arena(val pacMan: Hero, val maze: List<Cell>)
  */
 fun createArena() = Arena(
     pacMan = Hero(at = pacManStartingPosition, facing = Direction.RIGHT),
-    maze = MAZE_LAYOUT.map { if(isObstacle(it)) Cell.WALL else Cell.EMPTY }
+    maze = MAZE_LAYOUT.map {
+        when {
+            isPellet(it) -> Cell.PELLET
+            isPowerPellet(it) -> Cell.POWER_PELLET
+            isObstacle(it) -> Cell.WALL
+            else -> Cell.EMPTY
+        }
+    }
 )
 
 /**
  * Moves the hero in the direction he is facing
  */
-fun Arena.moveHero() = copy(pacMan = pacMan.move(this.maze))
+fun Arena.moveHero(): Arena {
+    val newHero = pacMan.move(this.maze)
+    return copy(
+        pacMan = newHero,
+        maze = maze.mapIndexed { index, elem ->
+            if (newHero.at == index.toCoordinate()) Cell.EMPTY
+            else elem
+        }
+    )
+}

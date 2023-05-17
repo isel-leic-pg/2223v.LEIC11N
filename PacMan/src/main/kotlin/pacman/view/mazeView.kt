@@ -1,7 +1,10 @@
 package pacman.view
 
+import pacman.domain.Arena
+import pacman.domain.Cell
 import pacman.domain.MAZE_HEIGHT
 import pacman.domain.MAZE_WIDTH
+import pacman.domain.toCoordinate
 import pt.isel.canvas.Canvas
 import pt.isel.canvas.WHITE
 
@@ -22,10 +25,25 @@ const val SCALED_MAZE_VIEW_HEIGHT = CELL_SIZE * MAZE_HEIGHT
 /**
  * Draws the maze on the screen area represented by [canvas]
  */
-fun Canvas.drawMaze() {
+fun Canvas.drawMaze(arena: Arena) {
     layoutSpritesCoordinates.forEach {
         drawLayoutSprite(this, it.originInSprite, it.originInArena)
     }
+
+    arena.maze.forEachIndexed { index, elem ->
+        if (elem == Cell.PELLET)
+            drawPellet(this, coordinateToPoint(index.toCoordinate(), SCALE))
+        else if (elem == Cell.POWER_PELLET)
+            drawPowerPellet(this, coordinateToPoint(index.toCoordinate(), SCALE))
+    }
+}
+
+internal fun drawPellet(canvas: Canvas, at: Point) {
+    drawLayoutSprite(canvas, PELLET_SPRITE_CODE.toPoint(), at)
+}
+
+internal fun drawPowerPellet(canvas: Canvas, at: Point) {
+    drawLayoutSprite(canvas, POWER_PELLET_SPRITE_CODE.toPoint(), at)
 }
 
 /**

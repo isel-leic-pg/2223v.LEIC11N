@@ -6,6 +6,11 @@ package pacman.domain
 data class Coordinate(val row: Int, val column: Int)
 
 /**
+ * Converts an integer to a coordinate
+ */
+fun Int.toCoordinate() = Coordinate(row = this / MAZE_WIDTH, column = this % MAZE_WIDTH)
+
+/**
  * Represents the directions in which the hero can move
  */
 enum class Direction {
@@ -16,18 +21,9 @@ enum class Direction {
  * Adds to this coordinate the position variation determined by [direction]. If the resulting
  * coordinate is outside the maze, the original coordinate is returned.
  */
-operator fun Coordinate.plus(direction: Direction): Coordinate {
-    val newCoordinate = when (direction) {
-        Direction.UP -> copy(row = row - 1)
-        Direction.DOWN -> copy(row = row + 1)
-        Direction.LEFT -> copy(column = column - 1)
-        Direction.RIGHT -> copy(column = column + 1)
+operator fun Coordinate.plus(direction: Direction) = when (direction) {
+        Direction.UP -> copy(row = if (row == 0) MAZE_HEIGHT - 1 else row - 1)
+        Direction.DOWN -> copy(row = (row + 1) % MAZE_HEIGHT)
+        Direction.LEFT -> copy(column = if (column == 0) MAZE_WIDTH - 1 else column - 1)
+        Direction.RIGHT -> copy(column = (column + 1) % MAZE_WIDTH)
     }
-    return if (newCoordinate.isValid()) newCoordinate else this
-}
-
-/**
- * Checks if this coordinate is inside the maze
- */
-fun Coordinate.isValid(): Boolean =
-    row >= 1 && row < MAZE_HEIGHT - 1 && column >= 1 && column < MAZE_WIDTH - 1

@@ -47,8 +47,8 @@ private const val EMPTY_SPRITE_CODE = 44
 /**
  * The sprite codes for pellets and power pellets
  */
-private const val PELLET_SPRITE_CODE = 45
-private const val POWER_PELLET_SPRITE_CODE = 47
+const val PELLET_SPRITE_CODE = 45
+const val POWER_PELLET_SPRITE_CODE = 47
 
 /**
  * Computes the sprite number that corresponds to the symbol at [index] of [layoutDescription].

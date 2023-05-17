@@ -66,7 +66,7 @@ fun createWorldCanvas() = Canvas(
  */
 fun Canvas.drawWorld(world: World) {
     erase()
-    drawMaze()
+    drawMaze(world.arena)
     redraw(world.arena.pacMan, world.heroMovementStep, world.heroAnimationStep)
 }
 
@@ -75,6 +75,7 @@ fun Canvas.drawWorld(world: World) {
  * each frame.
  */
 fun Canvas.redrawWorld(world: World) {
-    if (world.arena.pacMan.isMoving())
-        redraw(world.arena.pacMan, world.heroMovementStep, world.heroAnimationStep)
+    drawMaze(world.arena)
+    //if (world.arena.pacMan.isMoving())
+    redraw(world.arena.pacMan, world.heroMovementStep, world.heroAnimationStep)
 }

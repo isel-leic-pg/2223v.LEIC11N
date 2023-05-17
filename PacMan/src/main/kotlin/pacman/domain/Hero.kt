@@ -16,12 +16,12 @@ data class Hero(
 fun Hero.move(maze: List<Cell>): Hero {
     val newPositionChangedDirection = at + intent
     val intendedIndex = newPositionChangedDirection.column + newPositionChangedDirection.row * MAZE_WIDTH
-    if (maze[intendedIndex] == Cell.EMPTY)
+    if (maze[intendedIndex] != Cell.WALL)
         return copy(at = newPositionChangedDirection, previouslyAt = at, facing = intent)
 
     val newPositionSameDirection = at + facing
     val facingIndex = newPositionSameDirection.column + newPositionSameDirection.row * MAZE_WIDTH
-    return if (maze[facingIndex] == Cell.EMPTY)
+    return if (maze[facingIndex] != Cell.WALL)
         copy(at = newPositionSameDirection, previouslyAt = at)
     else
         copy(facing = intent, previouslyAt = at)
