@@ -13,7 +13,7 @@ import pacman.view.ANIMATION_STEP_COUNT
 import pacman.view.SCALE
 import pacman.view.SCALED_MAZE_VIEW_HEIGHT
 import pacman.view.SCALED_MAZE_VIEW_WIDTH
-import pacman.view.drawMaze
+import pacman.view.drawArena
 import pacman.view.redraw
 import pt.isel.canvas.BLACK
 import pt.isel.canvas.Canvas
@@ -66,7 +66,7 @@ fun createWorldCanvas() = Canvas(
  */
 fun Canvas.drawWorld(world: World) {
     erase()
-    drawMaze(world.arena)
+    drawArena(world.arena)
     redraw(world.arena.pacMan, world.heroMovementStep, world.heroAnimationStep)
 }
 
@@ -75,7 +75,6 @@ fun Canvas.drawWorld(world: World) {
  * each frame.
  */
 fun Canvas.redrawWorld(world: World) {
-    drawMaze(world.arena)
-    //if (world.arena.pacMan.isMoving())
-    redraw(world.arena.pacMan, world.heroMovementStep, world.heroAnimationStep)
+    if (world.arena.pacMan.isMoving())
+        redraw(world.arena.pacMan, world.heroMovementStep, world.heroAnimationStep)
 }

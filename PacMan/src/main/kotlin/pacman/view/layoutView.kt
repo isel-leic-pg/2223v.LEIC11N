@@ -1,11 +1,51 @@
 package pacman.view
 
+import pacman.domain.MAZE_HEIGHT
 import pacman.domain.MAZE_LAYOUT
 import pacman.domain.MAZE_WIDTH
 import pacman.domain.ghostHouseDoorSymbol
 import pacman.domain.isExternalWall
 import pacman.domain.isHauntedHouseWall
 import pacman.domain.isInternalWall
+import pt.isel.canvas.Canvas
+
+/**
+ * Draws the arena layout on this canvas. Note that the arena layout used in this game is always the same.
+ */
+fun Canvas.drawLayout() {
+    layoutSpritesCoordinates.forEach {
+        drawLayoutSprite(this, it.originInSprite, it.originInArena)
+    }
+}
+
+/**
+ * Draws a pellet on the given coordinates on this canvas.
+ */
+internal fun drawPellet(canvas: Canvas, at: Point) {
+    drawLayoutSprite(canvas, layoutSpriteIndexToPoint(PELLET_SPRITE_CODE), at)
+}
+
+/**
+ * Draws a power pellet on the given coordinates on this canvas.
+ */
+internal fun drawPowerPellet(canvas: Canvas, at: Point) {
+    drawLayoutSprite(canvas, layoutSpriteIndexToPoint(POWER_PELLET_SPRITE_CODE), at)
+}
+
+/**
+ * Draws on the given [screenPosition] the sprite located at [spritePosition] of the layout sprite sheet
+ */
+internal fun drawLayoutSprite(canvas: Canvas, spritePosition: Point, screenPosition: Point) {
+    val spriteX = spritePosition.x
+    val spriteY = spritePosition.y
+    canvas.drawImage(
+        "layout-sprite|$spriteX,$spriteY,$LAYOUT_SPRITE_SIZE,$LAYOUT_SPRITE_SIZE",
+        xLeft = screenPosition.x,
+        yTop = screenPosition.y,
+        width = CELL_SIZE,
+        height = CELL_SIZE
+    )
+}
 
 /**
  * List with the pre-computed coordinates of the layout sprites. The goal is to only compute them once,
@@ -28,6 +68,20 @@ fun layoutIndexToArenaPosition(index: Int) = Point(
     )
 
 /**
+ * Dimension in pixels of the maze cell's sprites
+ */
+const val LAYOUT_SPRITE_SIZE = 8
+
+/**
+ * The maze's scale factor
+ */
+const val SCALE = 2.0
+
+const val CELL_SIZE = (LAYOUT_SPRITE_SIZE * SCALE).toInt()
+const val SCALED_MAZE_VIEW_WIDTH = CELL_SIZE * MAZE_WIDTH
+const val SCALED_MAZE_VIEW_HEIGHT = CELL_SIZE * MAZE_HEIGHT
+
+/**
  * Represents information required to draw layout sprites on the screen.
  * @property originInArena  the coordinates where the sprite is to be drawn
  * @property originInArena  the coordinates of the sprite in the sprite sheet
@@ -47,8 +101,8 @@ private const val EMPTY_SPRITE_CODE = 44
 /**
  * The sprite codes for pellets and power pellets
  */
-const val PELLET_SPRITE_CODE = 45
-const val POWER_PELLET_SPRITE_CODE = 47
+private const val PELLET_SPRITE_CODE = 45
+private const val POWER_PELLET_SPRITE_CODE = 47
 
 /**
  * Computes the sprite number that corresponds to the symbol at [index] of [layoutDescription].
