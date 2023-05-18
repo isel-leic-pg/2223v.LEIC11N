@@ -11,6 +11,11 @@ data class Coordinate(val row: Int, val column: Int)
 fun Int.toCoordinate() = Coordinate(row = this / MAZE_WIDTH, column = this % MAZE_WIDTH)
 
 /**
+ * Converts a coordinate to an integer
+ */
+fun Coordinate.toInt() = row * MAZE_WIDTH + column
+
+/**
  * Represents the directions in which the hero can move
  */
 enum class Direction {

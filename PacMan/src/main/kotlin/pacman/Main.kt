@@ -21,9 +21,12 @@ const val FPS = 30
  */
 fun main() {
     onStart {
+        loadClips(MUNCH_SOUND, SIREN_SOUND, POWER_PELLET_SOUND)
         val canvas = createWorldCanvas()
         var world = World()
         canvas.drawWorld(world)
+
+        playSoundLoop(SIREN_SOUND)
 
         canvas.onKeyPressed { key ->
             val direction = getDirection(key)
@@ -38,7 +41,7 @@ fun main() {
     }
 
     onFinish {
-        println("Bye!")
+        stopsAllSounds()
     }
 }
 

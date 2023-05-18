@@ -190,3 +190,10 @@ private fun computeHauntedHouseWallCode(layoutDescription: String, index: Int): 
     }
     return code
 }
+
+/**
+ * Erases the cell on the given coordinates on this canvas.
+ */
+fun Canvas.eraseCell(originInArena: Point) {
+    drawLayoutSprite(this, layoutSpriteIndexToPoint(EMPTY_SPRITE_CODE), originInArena)
+}

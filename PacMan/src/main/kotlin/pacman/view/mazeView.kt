@@ -1,8 +1,10 @@
 package pacman.view
 
+import pacman.FPS
 import pacman.domain.Arena
 import pacman.domain.Cell
 import pacman.domain.toCoordinate
+import pacman.domain.toInt
 import pt.isel.canvas.Canvas
 
 /**
@@ -16,6 +18,18 @@ fun Canvas.drawArena(arena: Arena) {
         }
         else if (cell == Cell.POWER_PELLET) {
             drawPowerPellet(this, coordinateToPoint(index.toCoordinate(), SCALE))
+        }
+    }
+}
+
+fun Canvas.redrawArena(arena: Arena, frameNumber: Int) {
+    arena.powerPelletsLocations.forEach {
+        val cell = arena.maze[it.toInt()]
+        if (cell == Cell.POWER_PELLET) {
+            if (frameNumber % (FPS / 2) == 0)
+                drawPowerPellet(this, coordinateToPoint(it, SCALE))
+            else if (frameNumber % (FPS / 4) == 0)
+                eraseCell(coordinateToPoint(it, SCALE))
         }
     }
 }
