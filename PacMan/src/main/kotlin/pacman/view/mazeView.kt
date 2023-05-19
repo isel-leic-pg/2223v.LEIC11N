@@ -25,11 +25,9 @@ fun Canvas.drawArena(arena: Arena) {
 fun Canvas.redrawArena(arena: Arena, frameNumber: Int) {
     arena.powerPelletsLocations.forEach {
         val cell = arena.maze[it.toInt()]
-        if (cell == Cell.POWER_PELLET) {
-            if (frameNumber % (FPS / 2) == 0)
-                drawPowerPellet(this, coordinateToPoint(it, SCALE))
-            else if (frameNumber % (FPS / 4) == 0)
-                eraseCell(coordinateToPoint(it, SCALE))
-        }
+        if (frameNumber % (FPS / 2) == 0)
+            drawPowerPellet(this, coordinateToPoint(it, SCALE))
+        else if (frameNumber % (FPS / 4) == 0)
+            eraseCell(coordinateToPoint(it, SCALE))
     }
 }

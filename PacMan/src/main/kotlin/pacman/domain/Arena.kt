@@ -56,13 +56,16 @@ fun createArena() = Arena(
  */
 fun ArenaState.moveHero(): ArenaState {
     val newHeroActionResult = arena.pacMan.move(arena.maze)
-    return copy(
-        arena = arena.copy(
+    return ArenaState(
+        arena = Arena(
             pacMan = newHeroActionResult.hero,
             maze = arena.maze.mapIndexed { index, elem ->
                 if (newHeroActionResult.hero.at == index.toCoordinate()) Cell.EMPTY
                 else elem
-            }
+            },
+            powerPelletsLocations =
+                if (newHeroActionResult.action != HeroAction.EAT_POWER_PELLET) arena.powerPelletsLocations
+                else arena.powerPelletsLocations.filter { it != newHeroActionResult.hero.at }
         ),
         action = newHeroActionResult.action
     )

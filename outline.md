@@ -230,3 +230,18 @@
 
 ***For reference:***
 * [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=nxHZhnjEBfI&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=16)
+
+## Week 12
+### 17/05/2023 - Coding session
+* Live coding session: Building a PacMan clone, continued
+  * A mental model for solving programming problems, continued
+
+***For reference:***
+* [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=doZp1k4VaDk&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=17)
+
+### 18/05/2023 - Coding session
+* Live coding session: Building a PacMan clone, continued
+  * A mental model for solving programming problems, continued
+
+***For reference:***
+* [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=sUAt5t_iSP4&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=18)
