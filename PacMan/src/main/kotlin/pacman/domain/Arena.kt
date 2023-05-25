@@ -22,7 +22,10 @@ enum class Cell {
 data class Arena(
     val pacMan: Hero,
     val maze: List<Cell>,
-    val powerPelletsLocations: List<Coordinate>
+    val powerPelletsLocations: List<Coordinate>,
+    val ghosts: List<Ghost> = listOf(
+        Ghost(id = GhostId.SHADOW, at = ghostsStartingPosition, facing = ghostsStartingFacing),
+    )
 )
 
 /**
@@ -57,7 +60,7 @@ fun createArena() = Arena(
 fun ArenaState.moveHero(): ArenaState {
     val newHeroActionResult = arena.pacMan.move(arena.maze)
     return ArenaState(
-        arena = Arena(
+        arena = arena.copy(
             pacMan = newHeroActionResult.hero,
             maze = arena.maze.mapIndexed { index, elem ->
                 if (newHeroActionResult.hero.at == index.toCoordinate()) Cell.EMPTY
@@ -71,6 +74,13 @@ fun ArenaState.moveHero(): ArenaState {
     )
 }
 
+/**
+ * Moves the ghosts in the arena, according to the maze's rules.
+ */
+fun ArenaState.moveGhosts(): ArenaState {
+    val newGhosts = arena.ghosts.map { it.move(arena) }
+    return copy(arena = arena.copy(ghosts = newGhosts))
+}
 
 /**
  * Checks if there is a wall on the given position of the arena.

@@ -7,9 +7,12 @@ import pacman.domain.Step
 import pacman.domain.changeIntent
 import pacman.domain.createArena
 import pacman.domain.isMoving
+import pacman.domain.move
+import pacman.domain.moveGhosts
 import pacman.domain.moveHero
 import pacman.domain.next
 import pacman.view.ANIMATION_STEP_COUNT
+import pacman.view.FRAMES_PER_GHOST_MOVE
 import pacman.view.FRAMES_PER_HERO_MOVE
 import pacman.view.SCALED_MAZE_VIEW_HEIGHT
 import pacman.view.SCALED_MAZE_VIEW_WIDTH
@@ -35,21 +38,26 @@ data class World(
  * Computes the next state of the world
  */
 fun World.doStep(): World {
+
     val nextFrameNumber = frameNumber + 1
 
-    val nextArenaState =
-        if (nextFrameNumber % FRAMES_PER_HERO_MOVE == 0) arenaState.moveHero()
+    val arenaAfterGhostsMove =
+        if (nextFrameNumber % FRAMES_PER_GHOST_MOVE == 0) arenaState.moveGhosts()
         else arenaState
+
+    val nextArenaState =
+        if (nextFrameNumber % FRAMES_PER_HERO_MOVE == 0) arenaAfterGhostsMove.moveHero()
+        else arenaAfterGhostsMove
 
     val nextAnimationStep =
         if (arenaState.arena.pacMan.isMoving()) heroAnimationStep.next()
         else heroAnimationStep
 
-    val nextScatterModeEnd =
-        if (arenaState.action == HeroAction.EAT_POWER_PELLET)
-            frameNumber + SCATTER_MODE_DURATION
-        else if (frameNumber == scatterModeEnd) null
-        else scatterModeEnd
+    val nextScatterModeEnd = when {
+        nextArenaState.action == HeroAction.EAT_POWER_PELLET -> frameNumber + SCATTER_MODE_DURATION
+        scatterModeEnd == frameNumber -> null
+        else -> scatterModeEnd
+    }
 
     val nextWorld = copy(
         arenaState = nextArenaState,
@@ -90,7 +98,9 @@ fun createWorldCanvas() = Canvas(
 fun Canvas.drawWorld(world: World) {
     erase()
     drawArena(world.arenaState.arena)
+
     redraw(world.arenaState.arena.pacMan, world.frameNumber, world.heroAnimationStep)
+    redraw(world.arenaState.arena.ghosts, world.frameNumber)
 }
 
 /**
@@ -100,6 +110,8 @@ fun Canvas.drawWorld(world: World) {
 fun Canvas.redrawWorld(world: World) {
     if (world.arenaState.arena.pacMan.isMoving())
         redraw(world.arenaState.arena.pacMan, world.frameNumber, world.heroAnimationStep)
+
+    redraw(world.arenaState.arena.ghosts, world.frameNumber)
     redrawArena(world.arenaState.arena, world.frameNumber)
 }
 
