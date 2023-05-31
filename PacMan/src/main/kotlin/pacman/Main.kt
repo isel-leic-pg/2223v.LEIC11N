@@ -20,22 +20,25 @@ const val FPS = 30
  * see [here](https://pacman.fandom.com/wiki/Pac-Man_(game))
  *
  * Next lecture script
- * Goal: Add ghosts to the game
- * Step 1: Ghost representation. Discuss what is required.
- * Step 2: Ghost rendering.
- * Step 2.1: What is common to all actors, ghosts and hero?
- * Step 2.2: Create the ActorsView.kt file and move the common code there.
- * Step 2.3: Create the GhostsView.kt file and place the ghost specific code there.
- * Step 3: Lets add one ghost to the arena. We start with SHADOW.
- * Step 4: Ghost movement.
- * Step 4.1: We start with a simple movement pattern; if the ghost cannot move in the current direction,
+ * Goal: Ghost movement and refinement of the game rendering
+ * Step 1: We start with a simple movement pattern; if the ghost cannot move in the current direction,
  * it will choose a random direction.
- * Step 4.2: We will use the same movement pattern for all ghosts, for now. What if we want to change that? More,
- * what if we want to change the movement pattern of a specific ghost dynamically?
- * Step 5: Lets add the other ghosts.
- * Step 5.1: They all start at the sane position at the same instant, that is, Shadow's initial position.
- * Step 5.2: Move all the ghosts.
- * Step 5.3: Ghosts start gradually, one at a time. The first one is Shadow, the second is Speedy, the third is Bashful
+ * Step 2: Refine rendering.
+ * Step 2.1: The ghost movement is erasing the pellets. We need to redraw the pellets that were being
+ * hidden by the ghost. Create a new function that redraws the pellets in the MazeView.kt file
+ * Step 2.2: Refactor the solution so that redrawing the arena consists of the following steps:
+ *     1. Clear the ghosts' previous positions
+ *     2. Redraw the pellets that were hidden by the ghosts
+ *     3. Redraw the hero
+ *     4. Draw the ghosts on their current positions
+ *     5. Redraw the power pellets if they are visible, that is, not being hidden by a ghost
+ * Step 3: Lets add the other ghosts.
+ * Step 3.1: They all start at the same position at the same instant, that is, Shadow's initial position.
+ * Step 3.2: Move all the ghosts.
+ * Step 4: We are using the same movement pattern for all ghosts. What if we want to change that? More,
+ * what if we want to change the movement pattern of a specific ghost dynamically? For example, what if we want to
+ * change the movement pattern when in scatter mode and resume the previous one when in chase mode?
+ * Step 5: Ghosts start gradually, one at a time. The first one is Shadow, the second is Speedy, the third is Bashful
  * and the fourth is Pokey. They start at the same position, but with a delay of 8 seconds between them.
  */
 fun main() {

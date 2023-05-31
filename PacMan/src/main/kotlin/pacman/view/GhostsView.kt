@@ -13,7 +13,7 @@ const val FRAMES_PER_GHOST_MOVE = SCALE.toInt() * 3
  * Draws the ghost on this canvas, clearing the canvas on the previous ghost position.
  * @param ghost the ghost to be drawn
  * @param frameNumber the current frame number. Used to determine the relative position of
- * the hero's sprite in the canvas with resct to the center of the cell.
+ * the hero's sprite in the canvas with respect to the center of the cell.
  */
 fun Canvas.redraw(ghost: Ghost, frameNumber: Int) {
 

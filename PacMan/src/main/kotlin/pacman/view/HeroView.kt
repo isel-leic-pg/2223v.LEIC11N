@@ -15,7 +15,7 @@ const val ANIMATION_STEP_COUNT = 8
 /**
  * The number of frames that are required so that the hero moves one cell.
  */
-const val FRAMES_PER_HERO_MOVE = SCALE.toInt()
+const val FRAMES_PER_HERO_MOVE = SCALE.toInt() * 2
 
 /**
  * Draws the hero on this canvas, clearing the canvas on the previous hero position.

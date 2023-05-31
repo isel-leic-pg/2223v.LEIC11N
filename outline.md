@@ -245,3 +245,49 @@
 
 ***For reference:***
 * [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=sUAt5t_iSP4&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=18)
+
+## Week 13
+### 24/05/2023 - Coding session
+* Live coding session: Building a PacMan clone, continued
+  * A mental model for solving programming problems, continued
+  * Review of the studied concepts
+
+***For reference:***
+* [Lecture video (in Portuguese)](https://www.youtube.com/watch?v=vXVCEzF7H-w&list=PL8XxoCaL3dBgtEHFYBQHgXqxquGS945ju&index=19)
+
+### 25/05/2023 - Evaluation session and Practical class
+* Part 1: Evaluation session
+  * Realization the third mini test
+* Part 2: Practical class
+  * Session dedicated to solving the third assignment
+
+## Week 14
+### 31/05/2023 - Coding session
+* Live coding session: Building a PacMan clone, continued
+  * A mental model for solving programming problems, continued
+  * Review of the studied concepts
+
+***For reference:***
+* Lecture video (in Portuguese) - to be published
+
+### 01/06/2023 - Revisions and practical class
+* Part 1: Revisions
+  * Review of the studied concepts
+  * Solving the third mini test
+* Part 2: Practical class 
+  * Session dedicated to solving the third assignment
+
+* **Important:** This session will not be recorded
+
+## Week 15
+### 07/06/2023 - The semester in review and evaluation session
+* Part 1: The semester in review
+  * Review of the studied concepts
+  * Review of the assignments
+  * A last look at the running example: PacMan clone
+  * Keep an eye out for changes, if you're interested in the project, [here](https://github.com/palbp/laboratory/tree/main/Essays/Testability/PacMan)
+* Part 2: Evaluation session
+  * Realization of the fourth and final mini test
+
+***For reference:***
+* Lecture video (in Portuguese) - to be published
