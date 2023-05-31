@@ -11,9 +11,10 @@ val ghostsStartingFacing = Direction.LEFT
  */
 data class Ghost(
     val id: GhostId,
-    val at: Coordinate,
-    val facing: Direction,
-    val previouslyAt: Coordinate = at
+    val at: Coordinate = ghostsStartingPosition,
+    val facing: Direction = ghostsStartingFacing,
+    val previouslyAt: Coordinate = at,
+    val movement: (Arena, Ghost) -> Ghost = ::randomSelectionWhenFacingWall
 )
 
 /**
@@ -26,14 +27,24 @@ enum class GhostId { SHADOW, SPEEDY, BASHFUL, POKEY }
  * Moves the ghost to the next cell in the direction it's facing. If there's a wall in the way, the ghost changes
  * direction.
  */
-fun Ghost.move(arena: Arena): Ghost {
+fun Ghost.move(arena: Arena): Ghost = this.movement(arena, this)
 
+fun randomSelectionWhenFacingWall(arena: Arena, ghost: Ghost): Ghost {
     val nextFacing =
-        if (!arena.maze.hasWall(at + facing)) facing
+        if (!arena.maze.hasWall(ghost.at + ghost.facing)) ghost.facing
         else Direction
-                .values()
-                .filter { !arena.maze.hasWall(at + it) }
-                .random()
+            .values()
+            .filter { !arena.maze.hasWall(ghost.at + it) }
+            .random()
 
-    return copy(facing = nextFacing, at = at + nextFacing, previouslyAt = at)
+    return ghost.copy(facing = nextFacing, at = ghost.at + nextFacing, previouslyAt = ghost.at)
+}
+
+fun randomSelection(arena: Arena, ghost: Ghost): Ghost {
+    val nextFacing = Direction
+        .values()
+        .filter { !arena.maze.hasWall(ghost.at + it) }
+        .random()
+
+    return ghost.copy(facing = nextFacing, at = ghost.at + nextFacing, previouslyAt = ghost.at)
 }

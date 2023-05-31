@@ -43,7 +43,7 @@ const val FPS = 30
  */
 fun main() {
     onStart {
-        loadClips(MUNCH_SOUND, SIREN_SOUND, POWER_PELLET_SOUND)
+//        loadClips(MUNCH_SOUND, SIREN_SOUND, POWER_PELLET_SOUND)
         val canvas = createWorldCanvas()
         var world = World()
         canvas.drawWorld(world)

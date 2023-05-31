@@ -9,21 +9,27 @@ import pt.isel.canvas.Canvas
  */
 const val FRAMES_PER_GHOST_MOVE = SCALE.toInt() * 3
 
+
+/**
+ * Clears the canvas on the ghost's last position
+ */
+fun Canvas.clear(ghost: Ghost) {
+    val previousPositionInArena = Point(
+        x = Integer.max(ghost.previouslyAt.column * CELL_SIZE - actorsOffset.x, 0),
+        y = Integer.max(ghost.previouslyAt.row * CELL_SIZE - actorsOffset.y, 0)
+    )
+    clearActorArea(previousPositionInArena)
+}
+
 /**
  * Draws the ghost on this canvas, clearing the canvas on the previous ghost position.
  * @param ghost the ghost to be drawn
  * @param frameNumber the current frame number. Used to determine the relative position of
  * the hero's sprite in the canvas with respect to the center of the cell.
  */
-fun Canvas.redraw(ghost: Ghost, frameNumber: Int) {
+fun Canvas.draw(ghost: Ghost, frameNumber: Int) {
 
     val spriteInfo = computeSpriteInfo(ghost, frameNumber)
-
-    val previousPositionInArena = Point(
-        x = Integer.max(ghost.previouslyAt.column * CELL_SIZE - actorsOffset.x, 0),
-        y = Integer.max(ghost.previouslyAt.row * CELL_SIZE - actorsOffset.y, 0)
-    )
-    clearActorArea(previousPositionInArena)
 
     val positionInArena = Point(
         x = Integer.max(ghost.at.column * CELL_SIZE - actorsOffset.x, 0),
@@ -54,6 +60,13 @@ internal fun computeSpriteInfo(ghost: Ghost, frameNumber: Int): SpriteInfo {
 /**
  * Draws the given ghosts in the canvas.
  */
-fun Canvas.redraw(ghosts: List<Ghost>, frameNumber: Int) {
-    ghosts.forEach { redraw(it, frameNumber) }
+fun Canvas.draw(ghosts: List<Ghost>, frameNumber: Int) {
+    ghosts.forEach { draw(it, frameNumber) }
+}
+
+/**
+ * Clears the given ghosts in the canvas.
+ */
+fun Canvas.clear(ghosts: List<Ghost>) {
+    ghosts.forEach { clear(it) }
 }

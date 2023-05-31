@@ -23,9 +23,7 @@ data class Arena(
     val pacMan: Hero,
     val maze: List<Cell>,
     val powerPelletsLocations: List<Coordinate>,
-    val ghosts: List<Ghost> = listOf(
-        Ghost(id = GhostId.SHADOW, at = ghostsStartingPosition, facing = ghostsStartingFacing),
-    )
+    val ghosts: List<Ghost> = listOf()
 )
 
 /**
@@ -80,6 +78,19 @@ fun ArenaState.moveHero(): ArenaState {
 fun ArenaState.moveGhosts(): ArenaState {
     val newGhosts = arena.ghosts.map { it.move(arena) }
     return copy(arena = arena.copy(ghosts = newGhosts))
+}
+
+
+/**
+ * Adds a new ghost to the arena, if there are still ghosts to add.
+ */
+fun ArenaState.addNextGhost(): ArenaState {
+    val newGhostList =
+        if (arena.ghosts.size == GhostId.values().size) arena.ghosts
+        else arena.ghosts + Ghost(id = GhostId.values().get(arena.ghosts.size))
+
+    val newArena = arena.copy(ghosts = newGhostList)
+    return copy(arena = newArena)
 }
 
 /**

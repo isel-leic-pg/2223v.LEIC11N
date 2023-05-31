@@ -2,8 +2,10 @@ package pacman
 
 import pacman.domain.ArenaState
 import pacman.domain.Direction
+import pacman.domain.GhostId
 import pacman.domain.HeroAction
 import pacman.domain.Step
+import pacman.domain.addNextGhost
 import pacman.domain.changeIntent
 import pacman.domain.createArena
 import pacman.domain.isMoving
@@ -16,6 +18,7 @@ import pacman.view.FRAMES_PER_GHOST_MOVE
 import pacman.view.FRAMES_PER_HERO_MOVE
 import pacman.view.SCALED_MAZE_VIEW_HEIGHT
 import pacman.view.SCALED_MAZE_VIEW_WIDTH
+import pacman.view.draw
 import pacman.view.drawArena
 import pacman.view.redraw
 import pacman.view.redrawArena
@@ -23,6 +26,7 @@ import pt.isel.canvas.BLACK
 import pt.isel.canvas.Canvas
 
 const val SCATTER_MODE_DURATION = FPS * 8
+const val SECONDS_BETWEEN_GHOSTS = 8
 
 /**
  * Represents the state of the game world
@@ -41,9 +45,11 @@ fun World.doStep(): World {
 
     val nextFrameNumber = frameNumber + 1
 
+    val arenaStateAfterAddGhost = maybeAddGhost(arenaState, nextFrameNumber)
+
     val arenaAfterGhostsMove =
-        if (nextFrameNumber % FRAMES_PER_GHOST_MOVE == 0) arenaState.moveGhosts()
-        else arenaState
+        if (nextFrameNumber % FRAMES_PER_GHOST_MOVE == 0) arenaStateAfterAddGhost.moveGhosts()
+        else arenaStateAfterAddGhost
 
     val nextArenaState =
         if (nextFrameNumber % FRAMES_PER_HERO_MOVE == 0) arenaAfterGhostsMove.moveHero()
@@ -66,7 +72,7 @@ fun World.doStep(): World {
         scatterModeEnd = nextScatterModeEnd
     )
 
-    computeSoundEffects(world = this, nextWorld = nextWorld)
+//    computeSoundEffects(world = this, nextWorld = nextWorld)
 
     return nextWorld
 }
@@ -100,7 +106,7 @@ fun Canvas.drawWorld(world: World) {
     drawArena(world.arenaState.arena)
 
     redraw(world.arenaState.arena.pacMan, world.frameNumber, world.heroAnimationStep)
-    redraw(world.arenaState.arena.ghosts, world.frameNumber)
+    draw(world.arenaState.arena.ghosts, world.frameNumber)
 }
 
 /**
@@ -108,11 +114,7 @@ fun Canvas.drawWorld(world: World) {
  * each frame.
  */
 fun Canvas.redrawWorld(world: World) {
-    if (world.arenaState.arena.pacMan.isMoving())
-        redraw(world.arenaState.arena.pacMan, world.frameNumber, world.heroAnimationStep)
-
-    redraw(world.arenaState.arena.ghosts, world.frameNumber)
-    redrawArena(world.arenaState.arena, world.frameNumber)
+    redrawArena(world.arenaState.arena, world.frameNumber, world.heroAnimationStep)
 }
 
 /**
@@ -148,4 +150,15 @@ private fun computeSoundEffects(world: World, nextWorld: World) {
         enteredScatterMode -> { stopSoundLoop(SIREN_SOUND); playSoundLoop(POWER_PELLET_SOUND) }
         exitedScatterMode -> { playSoundLoop(SIREN_SOUND); stopSoundLoop(POWER_PELLET_SOUND) }
     }
+}
+
+/**
+ * Adds a ghost to the arena state if it's time to do so. Otherwise, returns the same arena state.
+ * A ghost is added every SECONDS_BETWEEN_GHOSTS seconds until all of them are in the maze.
+ */
+fun maybeAddGhost(arenaState: ArenaState, frameNumber: Int): ArenaState {
+    val elapsedSeconds = frameNumber / FPS
+    return if (arenaState.arena.ghosts.size == GhostId.values().size) arenaState
+    else if (elapsedSeconds > arenaState.arena.ghosts.size * SECONDS_BETWEEN_GHOSTS) arenaState.addNextGhost()
+    else arenaState
 }

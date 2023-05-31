@@ -4,7 +4,6 @@ import pacman.domain.Direction
 import pacman.domain.Hero
 import pacman.domain.Step
 import pacman.domain.isMoving
-import pt.isel.canvas.BLACK
 import pt.isel.canvas.Canvas
 
 /**
